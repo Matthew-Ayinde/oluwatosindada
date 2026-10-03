@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oluwatosin Dada — Portfolio
 
-## Getting Started
+An editorial single-page portfolio built with Next.js 16 (App Router), Tailwind CSS v4 and GSAP
+(ScrollSmoother, ScrollTrigger, SplitText). The design spec lives in [BRIEF.md](BRIEF.md).
 
-First, run the development server:
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Set the production URL so canonical links, the sitemap, robots.txt and Open Graph tags point at
+the right domain:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-## Learn More
+If this is not set, the site falls back to `https://oluwatosindada.vercel.app`.
 
-To learn more about Next.js, take a look at the following resources:
+## Where things live
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | Purpose |
+| --- | --- |
+| `lib/content.ts` | All copy (sourced from the CV and portfolio). Edit text here. |
+| `lib/site.ts` | Site URL, SEO title, description, keywords, nav. |
+| `components/sections/*` | Server-rendered sections, which keep every word crawlable. |
+| `components/Motion.tsx` | A single GSAP orchestrator driven by `data-*` hooks in the markup. |
+| `app/opengraph-image.tsx`, `lib/og.tsx` | Generated 1200×630 social card. |
+| `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png` | "OD" monogram icons. |
+| `assets/fonts` | Fraunces files used only by the OG image renderer. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Motion hooks
 
-## Deploy on Vercel
+`data-split` (line reveal), `data-split="chars"`, `data-words` (scrubbed reading),
+`data-reveal`, `data-stagger`, `data-rule`, `data-img` + `data-img-inner` (curtain reveal and
+parallax), `data-count`, `data-marquee`, `data-drift`, `data-speed` (ScrollSmoother parallax),
+`data-hscroll` (pinned horizontal rail, desktop only), `data-pin`, `data-magnetic`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Users with `prefers-reduced-motion` get native scrolling and static content.

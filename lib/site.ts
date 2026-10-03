@@ -8,8 +8,9 @@ export const siteUrl = (
 
 export const siteTitle = `${person.name} — HR & People Management Professional, Lagos`;
 
+// ~155 characters so search results show it in full
 export const siteDescription =
-  "Oluwatosin Dada is a Lagos-based HR professional and People Management Executive specialising in HR operations, employee relations, performance management, payroll & compliance, HR governance and ISO 9001 / ISO 27001 documentation. I build structure where there is ambiguity.";
+  "Lagos-based HR professional and People Management Executive — HR operations, employee relations, payroll compliance, HR governance and ISO documentation.";
 
 export const keywords = [
   "Oluwatosin Dada",
