@@ -7,7 +7,7 @@ export default function Quote() {
       <span
         aria-hidden="true"
         data-speed="0.85"
-        className="serif-italic pointer-events-none absolute -left-[0.08em] top-6 select-none text-[48vw] leading-none text-sage lg:text-[30vw]"
+        className="serif-italic pointer-events-none absolute left-0 top-6 select-none text-[48vw] leading-none text-sage lg:text-[30vw]"
       >
         &ldquo;
       </span>

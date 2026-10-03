@@ -12,17 +12,17 @@ export default function Iso() {
         <SectionHead index="05" label="ISO certification documentation" aside="Submitted to Amtivo" tone="dark" />
       </div>
 
-      {/* Drifting standard codes */}
-      <div aria-hidden="true" className="flex flex-col gap-2 select-none">
+      {/* Standard codes: sized to fit on small screens, drift sideways on desktop only */}
+      <div aria-hidden="true" className="flex flex-col gap-2 select-none overflow-hidden">
         <p
           data-drift="-18"
-          className="display whitespace-nowrap pl-[var(--gutter)] text-[19vw] text-fern lg:text-[13vw]"
+          className="display whitespace-nowrap pl-[var(--gutter)] text-[13vw] text-fern lg:text-[13vw]"
         >
           ISO 9001<span className="serif-italic">:2015</span>
         </p>
         <p
           data-drift="12"
-          className="display outline-text whitespace-nowrap pl-[18vw] text-[19vw] lg:text-[13vw]"
+          className="display whitespace-nowrap pl-[var(--gutter)] text-[9.2vw] text-mist/70 lg:outline-text lg:pl-[18vw] lg:text-[13vw]"
         >
           ISO/IEC 27001<span className="serif-italic">:2022</span>
         </p>

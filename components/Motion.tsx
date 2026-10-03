@@ -133,6 +133,9 @@ export default function Motion() {
 
       mm.add(
         {
+          // matchMedia only runs the callback when at least one condition matches,
+          // so "all" guarantees it runs on phones too
+          all: "all",
           desktop: "(min-width: 1024px)",
           hover: "(hover: hover) and (pointer: fine)",
         },
@@ -263,19 +266,6 @@ export default function Motion() {
             });
           });
 
-          // Oversized type drifting sideways with scroll
-          $("[data-drift]").forEach((el) => {
-            gsap.fromTo(
-              el,
-              { xPercent: 0 },
-              {
-                xPercent: Number(el.dataset.drift),
-                ease: "none",
-                scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
-              }
-            );
-          });
-
           // Strike-through ledger
           $("[data-ledger-row]").forEach((row) => {
             gsap
@@ -334,6 +324,19 @@ export default function Motion() {
           });
 
           if (desktop) {
+            // Oversized type drifting sideways with scroll
+            $("[data-drift]").forEach((el) => {
+              gsap.fromTo(
+                el,
+                { xPercent: 0 },
+                {
+                  xPercent: Number(el.dataset.drift),
+                  ease: "none",
+                  scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+                }
+              );
+            });
+
             // Horizontal case-study rail
             $("[data-hscroll]").forEach((section) => {
               const track = section.querySelector<HTMLElement>("[data-hscroll-track]")!;
