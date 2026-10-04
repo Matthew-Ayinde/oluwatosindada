@@ -151,14 +151,18 @@ export default function Motion() {
             smoothTouch: false,
           });
 
-          // Hero drifts apart as you leave it
-          gsap
+          // Hero recedes as you leave it; the name only spreads apart on desktop,
+          // where it has room inside the margins (on phones it spans the full width)
+          const heroOut = gsap
             .timeline({
               scrollTrigger: { trigger: "[data-hero]", start: "top top", end: "bottom top", scrub: true },
             })
-            .to("[data-hero-line='1']", { xPercent: -10, ease: "none" }, 0)
-            .to("[data-hero-line='2']", { xPercent: 10, ease: "none" }, 0)
             .to("[data-hero-img]", { yPercent: 18, scale: 0.92, ease: "none" }, 0);
+          if (desktop) {
+            heroOut
+              .to("[data-hero-line='1']", { xPercent: -3, ease: "none" }, 0)
+              .to("[data-hero-line='2']", { xPercent: 3, ease: "none" }, 0);
+          }
 
           // Masked line reveals
           $("[data-split]").forEach((el) => {
